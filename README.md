@@ -1,2 +1,1 @@
-# wbdv-summer-proj
-# wbdv-summer-proj
+This is a requirement for CS 5610
