@@ -1,0 +1,17 @@
+.wbdv-header{
+    background-color: #808686;
+}
+.wbdv-float-btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    color: #eaeae8;
+    background-color: #27737a;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+
+.wbdv-my-float-btn{
+    margin-top: 15px;
+}
