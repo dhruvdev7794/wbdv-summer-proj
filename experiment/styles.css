@@ -1,0 +1,111 @@
+/*.wbdv-header{*/
+    /*!*height: 100px;*!*/
+    /*background-color: #90b0a8;*/
+    /*padding: 80px;*/
+/*}*/
+/*.circle-image-div{*/
+    /*display: inline-block;*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*background-color: #a39d8e;*/
+    /*border-radius: 50%;*/
+    /*text-align:center;*/
+    /*margin: 10px;*/
+    /*box-shadow: 2px 2px 3px #d1d2ca;*/
+/*}*/
+
+/*.primary-div{*/
+    /*display: block;*/
+    /*background-color: #E55EA2;*/
+/*}*/
+/*.circle-image-div-elem{*/
+    /*margin-top: 15px;*/
+/*}*/
+
+/*.project-card{*/
+    /*background-color: #90b0a8;*/
+    /*border-color: #90b0a8;*/
+    /*margin-bottom: 20px;*/
+    /*margin-top: 20px;*/
+    /*box-shadow: 2px 2px 3px #d1d2ca;*/
+/*}*/
+
+/*.project-card:hover{*/
+    /*background-color: #9bb7b0;*/
+    /*border-color: #9bb7b0;*/
+/*}*/
+
+/*Style for general website header*/
+.wbdv-header{
+    /*height: 100px;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-family: 'Righteous', cursive;
+    background-color: #EDEDED;
+    padding: 80px;
+}
+
+/*Styling for circle button (General)*/
+.circle-image-div{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background-color: #F9CF00;
+    border-radius: 50%;
+    text-align:center;
+    margin: 10px;
+    box-shadow: 2px 2px 3px #F19f4d;
+}
+.circle-image-div:hover{
+    background-color: #ecb996;
+    box-shadow: 0px 0px 0px;
+}
+
+/*Styling for circle button (Primary, e.g., Plus Button)*/
+.primary-div{
+    display: block;
+    background-color: #E55EA2;
+}
+.primary-div:hover{
+    background-color: #ea7eb4;
+    box-shadow: 0px 0px 0px;
+}
+.circle-image-div-elem{
+    margin-top: 15px;
+}
+
+/*Style for card for projects*/
+.project-card{
+    background-color: #E7Dfdd;
+    border-color: #E7Dfdd;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 3px #d1d2ca;
+}
+.project-card:hover{ /* on hovering card */
+    background-color: #54baac;
+    border-color: #54baac;
+}
+
+/*Style for card image*/
+.wbdv-card-img{
+    height: 200px;
+    /*width: 100px;*/
+    background-color: #379683;
+}
+
+.padding-heading{
+    padding-top: 150px;
+
+
+}
+.container{
+    font-family: 'Righteous', cursive;
+
+}
+
+/*.vertical-center{*/
+    /*top:50%;*/
+    /*bottom:50%;*/
+    /*!*position: absolute;*!*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+/*}*/
