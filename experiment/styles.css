@@ -1,0 +1,151 @@
+/*.wbdv-header{*/
+    /*!*height: 100px;*!*/
+    /*background-color: #90b0a8;*/
+    /*padding: 80px;*/
+/*}*/
+/*.circle-image-div{*/
+    /*display: inline-block;*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*background-color: #a39d8e;*/
+    /*border-radius: 50%;*/
+    /*text-align:center;*/
+    /*margin: 10px;*/
+    /*box-shadow: 2px 2px 3px #d1d2ca;*/
+/*}*/
+
+/*.primary-div{*/
+    /*display: block;*/
+    /*background-color: #E55EA2;*/
+/*}*/
+/*.circle-image-div-elem{*/
+    /*margin-top: 15px;*/
+/*}*/
+
+/*.project-card{*/
+    /*background-color: #90b0a8;*/
+    /*border-color: #90b0a8;*/
+    /*margin-bottom: 20px;*/
+    /*margin-top: 20px;*/
+    /*box-shadow: 2px 2px 3px #d1d2ca;*/
+/*}*/
+
+/*.project-card:hover{*/
+    /*background-color: #9bb7b0;*/
+    /*border-color: #9bb7b0;*/
+/*}*/
+
+/*Style for general website header*/
+
+/*62eb7e*/
+
+/*font-family: 'Righteous', cursive;*/
+
+.wbdv-header{
+    /*height: 100px;*/
+    /*font-family: 'Roboto Mono', monospace;*/
+    font-family: 'Roboto';
+    background-color: #fa9591;
+
+;
+    padding: 80px;
+}
+
+/*Styling for circle button (General)*/
+.circle-image-div{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    text-align:center;
+    margin: 10px;
+    box-shadow: 2px 2px 3px #fa9591;
+}
+.circle-image-div:hover{
+    background-color: #fa9591;
+    box-shadow: 0px 0px 0px;
+}
+
+/*Styling for circle button (Primary, e.g., Plus Button)*/
+.primary-div{
+    display: block;
+    background-color: #ffffff;
+}
+.primary-div:hover{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 0px;
+}
+.circle-image-div-elem{
+    margin-top: 15px;
+}
+
+/*Style for card for projects*/
+.project-card{
+    background-color: #ffffff;
+    border-color: #ffd11a;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 3px #ffffff;
+}
+.project-card:hover{ /* on hovering card */
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+/*Style for card image*/
+.wbdv-card-img{
+    height: 200px;
+    /*width: 100px;*/
+    background-color: #ffffff;
+}
+
+.padding-heading{
+    padding-top: 150px;
+
+
+}
+.container {
+  font-family: Roboto;
+}
+
+/*.vertical-center{*/
+    /*top:50%;*/
+    /*bottom:50%;*/
+    /*!*position: absolute;*!*/
+    /*transform: translateX(-50%) translateY(-50%);*/
+/*}*/
+.project-font{
+  color: #ffd11a;
+}
+.login-font{
+  color: #ffd11a;
+}
+.register-font{
+  color:#ffd11a;
+}
+
+
+.align-content-center{
+  text-align: center;
+
+}
+.logo-font{
+  color:#ffd11a;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.container{
+  background-size: 300px 100px;
+}
+
+.form-group {
+  /*height: 100px;*/
+  /*font-family: 'Roboto Mono', monospace;*/
+  font-family: 'Roboto';
+  background-color: #fa9591;
+
+}
+
+
