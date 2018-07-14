@@ -36,11 +36,18 @@
 /*}*/
 
 /*Style for general website header*/
+
+/*62eb7e*/
+
+/*font-family: 'Righteous', cursive;*/
+
 .wbdv-header{
     /*height: 100px;*/
     /*font-family: 'Roboto Mono', monospace;*/
-    font-family: 'Righteous', cursive;
-    background-color: #EDEDED;
+    font-family: 'Roboto';
+    background-color: #fa9591;
+
+;
     padding: 80px;
 }
 
@@ -49,24 +56,24 @@
     display: inline-block;
     height: 50px;
     width: 50px;
-    background-color: #F9CF00;
+    background-color: #ffffff;
     border-radius: 50%;
     text-align:center;
     margin: 10px;
-    box-shadow: 2px 2px 3px #F19f4d;
+    box-shadow: 2px 2px 3px #fa9591;
 }
 .circle-image-div:hover{
-    background-color: #ecb996;
+    background-color: #fa9591;
     box-shadow: 0px 0px 0px;
 }
 
 /*Styling for circle button (Primary, e.g., Plus Button)*/
 .primary-div{
     display: block;
-    background-color: #E55EA2;
+    background-color: #ffffff;
 }
 .primary-div:hover{
-    background-color: #ea7eb4;
+    background-color: #ffffff;
     box-shadow: 0px 0px 0px;
 }
 .circle-image-div-elem{
@@ -75,22 +82,22 @@
 
 /*Style for card for projects*/
 .project-card{
-    background-color: #E7Dfdd;
-    border-color: #E7Dfdd;
+    background-color: #ffffff;
+    border-color: #ffd11a;
     margin-bottom: 20px;
     margin-top: 20px;
-    box-shadow: 2px 2px 3px #d1d2ca;
+    box-shadow: 2px 2px 3px #ffffff;
 }
 .project-card:hover{ /* on hovering card */
-    background-color: #54baac;
-    border-color: #54baac;
+    background-color: #ffffff;
+    border-color: #ffffff;
 }
 
 /*Style for card image*/
 .wbdv-card-img{
     height: 200px;
     /*width: 100px;*/
-    background-color: #379683;
+    background-color: #ffffff;
 }
 
 .padding-heading{
@@ -98,9 +105,8 @@
 
 
 }
-.container{
-    font-family: 'Righteous', cursive;
-
+.container {
+  font-family: Roboto;
 }
 
 /*.vertical-center{*/
@@ -109,3 +115,37 @@
     /*!*position: absolute;*!*/
     /*transform: translateX(-50%) translateY(-50%);*/
 /*}*/
+.project-font{
+  color: #ffd11a;
+}
+.login-font{
+  color: #ffd11a;
+}
+.register-font{
+  color:#ffd11a;
+}
+
+
+.align-content-center{
+  text-align: center;
+
+}
+.logo-font{
+  color:#ffd11a;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.container{
+  background-size: 300px 100px;
+}
+
+.form-group {
+  /*height: 100px;*/
+  /*font-family: 'Roboto Mono', monospace;*/
+  font-family: 'Roboto';
+  background-color: #fa9591;
+
+}
+
+
