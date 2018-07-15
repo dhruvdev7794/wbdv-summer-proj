@@ -1,7 +1,93 @@
-<div>
-<div id= 'signin' class="g-signin2" data-onsuccess="onSignIn"></div>
-  <a href="#" ng-click="signOut()">Sign out</a>
-<p>
-  {{message}}
-</p>
+<!--<div>-->
+<!--<div id= 'signin' class="g-signin2" data-onsuccess="onSignIn"></div>-->
+  <!--<a href="#" ng-click="signOut()">Sign out</a>-->
+<!--<p>-->
+  <!--{{message}}-->
+<!--</p>-->
+<!--</div>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+  <!--<meta http-equiv="x-ua-compatible" content="ie=edge">-->
+
+  <!--<link rel="stylesheet" href="./plugins/bootstrap-4.0.0-dist/css/bootstrap.min.css">-->
+  <!--<link rel="stylesheet" type="text/css" href="./plugins/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css">-->
+  <!--<link rel="stylesheet" href="styles.css">-->
+  <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">-->
+  <!--<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">-->
+
+  <!--<title>Login</title>-->
+
+  <!--<div class="padding-heading"></div>-->
+  <!--<div class="align-content-center">-->
+
+    <!--<div class="logo-font">-->
+      <!--<div style="font-family: Roboto-medium">-->
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</head>-->
+<body style="background-color: #fa9591">
+<!--<div class="padding-heading"></div>-->
+
+<div class="container">
+  <div class="container-fluid">
+
+    <div class="vertical-center">
+      <div class="outline-color">
+        <div class="login-font">
+          <h2>Login</h2>
+
+          <form>
+            <div class="form-group row">
+              <label for="usernameFld" class="col-sm-2 col-form-label">
+                Username </label>
+              <div class="col-sm-10">
+
+                <input type="text" class="form-control" [(ngModel)]="username_val" name="username" id="usernameFld">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="passwordFld" class="col-sm-2 col-form-label">
+                Password </label>
+              <div class="col-sm-10">
+                <input type="password" [(ngModel)]="password_val" name="password" class="form-control" id="passwordFld">
+              </div>
+            </div>
+
+            <div (click)="login()" class="float-right test-prop">
+              <div class="circle-image-div">
+                <i class="fa fa-check circle-image-div-elem"></i>
+              </div>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <a href="#" id="forgotpasswd">Forgot Password?</a>
+              </div>
+              <br>
+              <div class="col-6">
+                <a href="#" id="SignUp">Register</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+<!--</div>-->
+</body>
+<!--</html>-->
+
+

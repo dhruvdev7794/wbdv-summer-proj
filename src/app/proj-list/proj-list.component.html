@@ -1,0 +1,52 @@
+<body style="background-color: #ffffff">
+
+
+<header>
+
+  <div class="fixed-top">
+        <span class="float-right"
+              style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
+            <i class="fa fa-user"></i> Megan Fox
+        </span>
+
+    <div class="wbdv-header">
+      <div class="project-font">
+        <h1 class="float-left"> My Projects </h1>
+
+        <div class="float-right test-prop">
+          <div class="circle-image-div">
+            <i class="fa fa-user circle-image-div-elem"></i>
+          </div>
+          <div class="circle-image-div">
+            <i class="fa fa-code circle-image-div-elem"></i>
+          </div>
+          <div class="circle-image-div">
+            <i class="fa fa-ellipsis-v circle-image-div-elem"></i>
+          </div>
+        </div>
+        <div class="float-right">
+          <div class="circle-image-div primary-div">
+            <i class="fa fa-plus circle-image-div-elem"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="padding-heading"></div>
+<div class="container">
+  <div class="card-group" style="margin: 10px;">
+    <div *ngFor="let project of projects" class="col-4">
+      <a routerLink="/project/{{project.id}}/image">
+      <div class="card project-card">
+        <img class="card-img-top wbdv-card-img" src="./images/color-bg.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">{{project.projName}}</p>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
