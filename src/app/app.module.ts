@@ -8,6 +8,7 @@ import {routing} from './app.routing';
 import { ProjListComponent } from './proj-list/proj-list.component';
 import {ProjectServiceClient} from './services/project.service.client';
 import { ImageListComponent } from './image-list/image-list.component';
+import {ImageServiceClient} from './services/image.service.client';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ImageListComponent } from './image-list/image-list.component';
   ],
   providers: [
     ProjectServiceClient,
+    ImageServiceClient
   ],
   bootstrap: [
     AppComponent

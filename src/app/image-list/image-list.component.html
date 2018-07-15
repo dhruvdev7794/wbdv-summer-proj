@@ -1,3 +1,52 @@
-<p>
-  image-list works!
-</p>
+<body style="background-color: #ffffff">
+
+
+<header>
+
+  <div class="fixed-top">
+        <span class="float-right"
+              style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
+            <i class="fa fa-user"></i> Megan Fox
+        </span>
+    <div class="wbdv-header">
+      <div class="project-font">
+        <h1 class="float-left"> My Images </h1>
+
+        <div class="float-right test-prop">
+          <div class="circle-image-div">
+            <i class="fa fa-user circle-image-div-elem"></i>
+          </div>
+          <div class="circle-image-div">
+            <i class="fa fa-code circle-image-div-elem"></i>
+          </div>
+          <div class="circle-image-div">
+            <i class="fa fa-ellipsis-v circle-image-div-elem"></i>
+          </div>
+        </div>
+        <div class="float-right">
+          <div class="circle-image-div primary-div">
+            <i class="fa fa-plus circle-image-div-elem"></i>
+          </div>
+        </div>
+        <div class="float-right">
+          Add Using Drive
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="padding-heading"></div>
+<div class="container">
+  <div class="card-group" style="margin: 10px;">
+    <div *ngFor="let image of images" class="col-4">
+      <div class="card project-card">
+        <img class="card-img-top wbdv-card-img" src="" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">{{image.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
