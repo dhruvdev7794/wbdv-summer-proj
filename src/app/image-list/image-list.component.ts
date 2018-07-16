@@ -32,6 +32,7 @@ export class ImageListComponent implements OnInit {
 
   myToken;
   myXHR = new XMLHttpRequest();
+  responseText;
 
   onApiLoad() {
 
@@ -103,7 +104,7 @@ export class ImageListComponent implements OnInit {
         //   };
         //
         // }
-      })
+      });
         // .pipe('/images/this.fileId');
 
       // gapi.client.load('drive', 'v2', this.downloadFile);
@@ -114,16 +115,16 @@ export class ImageListComponent implements OnInit {
           if (response.items[0].webContentLink) {
             self.myToken = gapi.auth.getToken().access_token;
             self.myXHR.open('GET', response.items[0].webContentLink);
-            self.myXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
+            // self.myXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
             self.myXHR.setRequestHeader('Authorization', 'Bearer' + self.myToken);
             // self.myXHR.setHe
             self.myXHR.withCredentials = false;
             self.myXHR.onload = function() {
-              // self.myXHR.responseText;
-            }
+              self.responseText = self.myXHR.responseText;
+            };
             self.myXHR.send();
           }
-      })
+      });
       console.log('here');
 
 
