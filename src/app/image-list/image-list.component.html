@@ -1,8 +1,76 @@
 <body style="background-color: #ffffff">
+<script type="text/javascript">
+
+  // The Browser API key obtained from the Google API Console.
+  var developerKey = 'AIzaSyBp_GUisXiOtYTYr5Z4ioHu54G87fkMK4s';
+
+  // The Client ID obtained from the Google API Console. Replace with your own Client ID.
+  var clientId = '980576583017-vh5hhfqognajhlikef4jkmqs38leau6c.apps.googleusercontent.com';
+
+  // Scope to use to access user's photos.
+  var scope = 'https://www.googleapis.com/auth/drive';
+
+  var pickerApiLoaded = false;
+  var oauthToken;
+
+  // Use the API Loader script to load google.picker and gapi.auth.
+  function onApiLoad() {
+    gapi.load('auth2', onAuthApiLoad);
+    gapi.load('picker', onPickerApiLoad);
+  }
+
+  function onAuthApiLoad() {
+    var authBtn = document.getElementById('auth');
+    authBtn.disabled = false;
+    authBtn.addEventListener('click', function() {
+      gapi.auth2.authorize({
+        client_id: clientId,
+        scope: scope
+      }, handleAuthResult);
+    });
+  }
+
+  function onPickerApiLoad() {
+    pickerApiLoaded = true;
+    createPicker();
+  }
+
+  function handleAuthResult(authResult) {
+    if (authResult && !authResult.error) {
+      oauthToken = authResult.access_token;
+      createPicker();
+    }
+  }
+
+  // Create and render a Picker object for picking user Photos.
+  function createPicker() {
+    if (pickerApiLoaded && oauthToken) {
+      var picker = new google.picker.PickerBuilder().
+      addView(google.picker.ViewId.DOCS).
+      setOAuthToken(oauthToken).
+      setDeveloperKey(developerKey).
+      setCallback(pickerCallback).
+      build();
+      picker.setVisible(true);
+    }
+  }
+
+  // A simple callback implementation.
+  function pickerCallback(data) {
+    var url = 'nothing';
+    if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+      var doc = data[google.picker.Response.DOCUMENTS][0];
+      url = doc[google.picker.Document.URL];
+      console.log(doc);
+    }
+    var message = 'You picked: ' + url;
+    document.getElementById('result').innerHTML = message;
+  }
+</script>
 
 
 <header>
-
+  <!--<script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>-->
   <div class="fixed-top">
         <span class="float-right"
               style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
@@ -28,9 +96,13 @@
             <i class="fa fa-plus circle-image-div-elem"></i>
           </div>
         </div>
-        <div class="float-right">
-          Add Using Drive
+        <div>
+          <button type="button" class="float-right" id="auth" (click)="onApiLoad()">Authenticate</button>
+          <!--<div id="result"></div>-->
+
+          <!-- The Google API Loader script. -->
         </div>
+
       </div>
     </div>
   </div>
@@ -48,8 +120,4 @@
     </div>
   </div>
 </div>
-
-
-
-
 </body>
