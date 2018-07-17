@@ -38,13 +38,13 @@ export class ImageListComponent implements OnInit {
   responseText;
   responseResult = [];
 
-  // onApiLoad() {
+  onApiLoad() {
   //
   //   gapi.load('client:auth2', this.onAuthApiLoad);
   //   // gapi.client.load('drive', this.downloadFile);
   //   gapi.load('picker', this.onPickerApiLoad);
   //   // gapi.load('client', this.downloadFile);
-  // }
+  }
   //
   // onAuthApiLoad() {
   //   // this.authBtn = document.getElementById('auth');
