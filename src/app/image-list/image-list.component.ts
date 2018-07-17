@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ImageServiceClient} from '../services/image.service.client';
 import {ActivatedRoute} from '@angular/router';
+import Global = NodeJS.Global;
 let self;
 @Component({
   selector: 'app-image-list',
@@ -12,7 +13,9 @@ export class ImageListComponent implements OnInit {
   constructor(private service: ImageServiceClient, private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
     self = this;
+    // const global.__basedir = __dirname;
   }
+
 
   images = [];
   projectId;
@@ -33,6 +36,7 @@ export class ImageListComponent implements OnInit {
   myToken;
   myXHR = new XMLHttpRequest();
   responseText;
+  responseResult = [];
 
   onApiLoad() {
 
@@ -92,8 +96,8 @@ export class ImageListComponent implements OnInit {
         'method': 'GET',
         'fileId': this.fileId,
         'alt': 'media',
-        'path': '/drive/v2/files',
-        'params': {'maxResults': '1'},
+        'path': '/drive/v3/files',
+        // 'params': {'maxResults': '1'},
         // 'callback': function( theResponseJS, theResponseTxt) {
         //   // this.myToken = gapi.auth.getToken();
         //   // this.myXHR = new XMLHttpRequest();
@@ -110,31 +114,64 @@ export class ImageListComponent implements OnInit {
       // gapi.client.load('drive', 'v2', this.downloadFile);
 
 
+      let docId;
+      docId = this.doc.id;
       this.request.execute(function (response) {
-        console.log(response);
-          if (response.items[0].webContentLink) {
-            self.myToken = gapi.auth.getToken().access_token;
-            self.myXHR.open('GET', response.items[0].webContentLink);
-            // self.myXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
-            self.myXHR.setRequestHeader('Authorization', 'Bearer' + self.myToken);
-            // self.myXHR.setHe
-            self.myXHR.withCredentials = false;
-            self.myXHR.onload = function() {
-              self.responseText = self.myXHR.responseText;
-            };
-            self.myXHR.send();
-          }
+        console.log(response.files);
+        self.responseResult = response.files.filter(responseElem => responseElem.id === docId);
+        console.log(self.responseResult);
+        // if (self.responseResult[0].downloadUrl) {
+        //     self.myToken = gapi.auth.getToken().access_token;
+        //     self.myXHR.open('GET', self.responseResult[0].downloadUrl);
+        //     // self.myXHR.setRequestHeader('Access-Control-Allow-Origin', '*');
+        //     // self.myXHR.setRequestHeader('Access-Control-Allow-Headers', '*');
+        //     self.myXHR.setRequestHeader('Content-Type', 'application/json');
+        //     self.myXHR.setRequestHeader('Authorization', 'Bearer' + self.myToken);
+        //     // self.myXHR.withCredentials = true;
+        //     self.myXHR.onload = function() {
+        //       self.responseText = self.myXHR.responseText;
+        //     };
+        //     console.log(self.myXHR);
+        //     self.myXHR.send();
+        //     console.log('here');
+        //   }
       });
-      console.log('here');
+      this.myToken = gapi.auth.getToken().access_token;
+      console.log(this.fileId);
+      console.log(this.myToken);
+      self.myXHR.open('GET', 'https://www.googleapis.com/drive/v3/files/' + this.fileId + '?alt=media', true)
+      self.myXHR.setRequestHeader('Authorization', 'Bearer ' + this.myToken);
+      self.myXHR.responseType = 'arraybuffer';
+      self.myXHR.onload = ev => {
+        console.log(self.myXHR.response);
+        let name, blob, url, a, arraybuffer;
+        
+        arraybuffer = self.myXHR.response;
+        name = 'image.jpg';
+
+        // let _location, applicationNameIndex, applicationName, webFolderIndeX, webFolderFullPath;
+        // _location = document.location.toString();
+        // applicationNameIndex = _location.indexOf('/', _location.indexOf('://') + 3);
+        // applicationName = _location.substring(0, applicationNameIndex) + '/';
+        // webFolderIndeX = _location.indexOf('/', _location.indexOf(applicationName) + applicationName.length);
+        // webFolderFullPath = _location.substring(0, webFolderIndeX);
+        // console.log(webFolderFullPath);
+
+        blob = new Blob([arraybuffer], {type: 'image/jpeg'});
+
+        url = window.URL.createObjectURL(blob);
+        console.log(url);
+
+        a = document.createElement('a');
+        a.style = 'display:none';
+        a.href = url;
+        a.download = name;
+        // a.click();
+        window.URL.revokeObjectURL(url);
 
 
-      // self.myXHR.open('GET', 'https://www.googleapis.com/drive/v3/files/' + this.fileId + '?alt=media', true)
-      // self.myXHR.setRequestHeader('Authorization', 'Bearer' + self.myToken);
-      // self.myXHR.responseType = 'arraybuffer';
-      // self.myXHR.onload = function() {
-      //
-      // }
-      // self.myXHR.send();
+      };
+      self.myXHR.send();
 
 
       // this.request = gapi.client.drive.files.get({
@@ -153,11 +190,14 @@ export class ImageListComponent implements OnInit {
 
       // gapi.load('client', this.downloadFile);
 
-      console.log(this.doc);
-      console.log(this.doc.id);
+
     }
     // this.message = 'You picked: ' + this.url;
     // document.getElementById('result').innerHTML = this.message;
+  }
+
+  filterResponse(responseElem) {
+    return responseElem.id === self.docId;
   }
 
   downloadFile() {
@@ -172,7 +212,6 @@ export class ImageListComponent implements OnInit {
       'alt': 'media'
     }).pipe('/images/' + this.fileId);
 
-    // console.log(tihs.request);
   }
 
 
