@@ -91,12 +91,12 @@ export class ImageListComponent implements OnInit {
       //
 
 
-      this.request = gapi.client.request({
-        'method': 'GET',
-        'fileId': this.fileId,
-        'alt': 'media',
-        'path': '/drive/v3/files',
-      });
+      // this.request = gapi.client.request({
+      //   method: 'GET',
+      //   fileId: this.fileId,
+      //   alt: 'media',
+      //   path: '/drive/v3/files',
+      // });
       // .pipe('/images/this.fileId');
 
       // gapi.client.load('drive', 'v2', this.downloadFile);
@@ -113,27 +113,45 @@ export class ImageListComponent implements OnInit {
         method: 'GET',
         headers: {'Authorization': 'Bearer ' + this.myToken, 'Content-Type': 'application/json; charset=utf-8'}
       }).then(res => {
+        // console.log(res);
         return res.blob();
       })
         .then(res => {
+          fetch('https://www.googleapis.com/drive/v3/files/' + this.fileId, {
+            method: 'GET',
+            headers: {'Authorization': 'Bearer ' + this.myToken, 'Content-Type': 'application/json; charset=utf-8'}
+          }).then(reslist => reslist.json())
+            .then(fileJson => {
+              console.log(fileJson);
+              let contents;
+              contents = {
+                'name': fileJson.name,
+                'mimeType': fileJson.mimeType
+                // 'contents': res
+              };
+              self.service.saveImageAndAddRecord(self.projectId, contents)
+                .then(saveRes => self.service.updateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType))
+                .then(self.loadImages(self.projectId));
+              });
+            });
           // const objUrl = window.URL.createObjectURL(res);
           // console.log(res);
-          this.request.execute(function (response) {
-            // console.log(docId);
-            self.responseResult = response.files.filter(responseElem => responseElem.id === docId);
-            // console.log(self.responseResult);
-            let contents;
-            contents = {
-              'name': self.responseResult[0].name,
-              'mimeType': self.responseResult[0].mimeType
-              // 'contents': res
-            };
-            // console.log(contents);
-            self.service.saveImageAndAddRecord(self.projectId, contents)
-              .then(saveRes => self.service.updateImageRecordWithBlob(saveRes.id, res, self.responseResult[0].mimeType))
-              .then(self.loadImages(self.projectId));
-          });
-        });
+          // this.request.execute(function (response) {
+          //   // console.log(docId);
+          //   self.responseResult = response.files.filter(responseElem => responseElem.id === docId);
+          //   // console.log(self.responseResult);
+          //   let contents;
+          //   contents = {
+          //     'name': self.responseResult[0].name,
+          //     'mimeType': self.responseResult[0].mimeType
+          //     // 'contents': res
+          //   };
+          //   // console.log(contents);
+          //   self.service.saveImageAndAddRecord(self.projectId, contents)
+          //     .then(saveRes => self.service.updateImageRecordWithBlob(saveRes.id, res, self.responseResult[0].mimeType))
+          //     .then(self.loadImages(self.projectId));
+          // });
+        // });
 
 
 
