@@ -1,6 +1,6 @@
 export class ImageServiceClient {
-  IMAGE_URL_API = 'http://localhost:8080/api/projects/:PROJID/images';
-  IMAGE_SHORT_API_URL = 'http://localhost:8080/api/image/:IMAGEID';
+  IMAGE_URL_API = 'https://wbdv-project-java-jpa.herokuapp.com/api/projects/:PROJID/images';
+  IMAGE_SHORT_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/image/:IMAGEID';
   findAllImages(projectId) {
     return fetch(this.IMAGE_URL_API.replace(':PROJID', projectId))
       .then(response => response.json());
