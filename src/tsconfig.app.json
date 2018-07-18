@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": ["gapi", "gapi.auth2"]
+    "types": ["gapi", "gapi.auth2", "google"]
   },
   "exclude": [
     "src/test.ts",

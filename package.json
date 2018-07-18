@@ -29,6 +29,7 @@
     "@angular/router": "^6.0.3",
     "@types/gapi": "0.0.35",
     "@types/gapi.auth2": "0.0.47",
+    "@types/googlemaps": "^3.30.11",
     "angular": "^1.7.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
