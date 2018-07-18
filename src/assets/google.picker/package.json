@@ -1,0 +1,48 @@
+{
+  "_from": "@types/google.picker",
+  "_id": "@types/google.picker@0.0.32",
+  "_inBundle": false,
+  "_integrity": "sha512-S53O02/8OgP/CRa1B+BFlOyE13kwdxBSOTiBff7HJI5+TVTpG4yau6rFfHBPV4hoUj24au1xvbqpIUDBaACHcg==",
+  "_location": "/@types/google.picker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@types/google.picker",
+    "name": "@types/google.picker",
+    "escapedName": "@types%2fgoogle.picker",
+    "scope": "@types",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@types/google.picker/-/google.picker-0.0.32.tgz",
+  "_shasum": "750f364e3a10cb73311dab54675e3e3f15d57b48",
+  "_spec": "@types/google.picker",
+  "_where": "/Users/dhruvsharma/Desktop/cs5610/wbdv-summer-proj",
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "grapswiz",
+      "url": "https://github.com/grapswiz"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "TypeScript definitions for Google Picker API",
+  "license": "MIT",
+  "main": "",
+  "name": "@types/google.picker",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/DefinitelyTyped/DefinitelyTyped.git"
+  },
+  "scripts": {},
+  "typeScriptVersion": "2.0",
+  "typesPublisherContentHash": "8e246bb8c5c627640c2a8668158dc8bcfd7b3ae9dbc797d4b5195237b4b49b6d",
+  "version": "0.0.32"
+}

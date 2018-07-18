@@ -81,7 +81,7 @@ export class ImageListComponent implements OnInit {
 
   pickerCallback(data) {
     this.url = 'nothing';
-    if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+    if (data[google.picker.Response.ACTION] === google.picker.Action.PICKED) {
       this.doc = data[google.picker.Response.DOCUMENTS][0];
       this.url = this.doc[google.picker.Document.URL];
       this.fileId = this.doc.id;
@@ -235,19 +235,19 @@ export class ImageListComponent implements OnInit {
     return responseElem.id === self.docId;
   }
 
-  downloadFile() {
-    console.log('here');
-    // this.request = gapi.client.drive.files.get({
-    //   'fileId': this.fileId,
-    //   'alt': 'media'
-    // });
-
-    drive.files.get({
-      'fileId': this.fileId,
-      'alt': 'media'
-    }).pipe('/images/' + this.fileId);
-
-  }
+  // downloadFile() {
+  //   console.log('here');
+  //   // this.request = gapi.client.drive.files.get({
+  //   //   'fileId': this.fileId,
+  //   //   'alt': 'media'
+  //   // });
+  //
+  //   drive.files.get({
+  //     'fileId': this.fileId,
+  //     'alt': 'media'
+  //   }).pipe('/images/' + this.fileId);
+  //
+  // }
 
 
 
