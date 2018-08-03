@@ -14,6 +14,7 @@ export class ProjListComponent implements OnInit {
   }
 
   projects = [];
+
   ngOnInit() {
     this.findAllProjects();
   }
@@ -28,9 +29,15 @@ export class ProjListComponent implements OnInit {
     proj_name = prompt('Enter the project Name');
     if (proj_name != null && proj_name !== '') {
       this.service.addProject(proj_name)
-        .then(self.findAllProjects());
-      console.log(proj_name);
+        .then(() => self.findAllProjects());
     }
   }
 
+  deleteProj(project) {
+    const del = confirm('Are you sure you want to remove the Project?');
+    if (del === true) {
+      this.service.deleteProjects(project.id)
+        .then(() => self.findAllProjects());
+    }
+  }
 }

@@ -37,14 +37,19 @@
 <div class="container">
   <div class="card-group" style="margin: 10px;">
     <div *ngFor="let project of projects" class="col-4">
-      <a routerLink="/project/{{project.id}}/image">
+
       <div class="card project-card">
-        <img class="card-img-top wbdv-card-img" src="./images/color-bg.jpg" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">{{project.projName}}</p>
+        <a routerLink="/project/{{project.id}}/image">
+          <img class="card-img-top wbdv-card-img" src="./images/color-bg.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-title">{{project.projName}}</p>
+          </div>
+        </a>
+        <div>
+          <i class="float-right fa fa-trash" (click)="deleteProj(project)"></i>
         </div>
       </div>
-      </a>
+
     </div>
   </div>
 </div>
