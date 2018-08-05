@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {ImageServiceClient} from '../services/image.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {CommentServiceClient} from '../services/comment.service.client';
 // import Global = NodeJS.Global;
+declare var $;
 let self;
 @Component({
   selector: 'app-image-list',
@@ -10,7 +12,12 @@ let self;
 })
 export class ImageListComponent implements OnInit {
 
-  constructor(private service: ImageServiceClient, private route: ActivatedRoute) {
+  @ViewChild('addcommentmodal') addcommentmodal: ElementRef;
+
+
+  constructor(private service: ImageServiceClient,
+              private commentService: CommentServiceClient,
+              private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
     self = this;
     // const global.__basedir = __dirname;
@@ -20,6 +27,9 @@ export class ImageListComponent implements OnInit {
   images = [];
   projectId;
   authBtn;
+  comments = [];
+  comment;
+  clickUpload = false;
 
   developerKey = 'AIzaSyBp_GUisXiOtYTYr5Z4ioHu54G87fkMK4s';
   clientId = '980576583017-vh5hhfqognajhlikef4jkmqs38leau6c.apps.googleusercontent.com';
@@ -131,7 +141,7 @@ export class ImageListComponent implements OnInit {
               };
               self.service.saveImageAndAddRecord(self.projectId, contents)
                 .then(saveRes => self.service.updateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType))
-                .then(self.loadImages(self.projectId));
+                .then(() => self.loadImages(self.projectId));
               });
             });
           // const objUrl = window.URL.createObjectURL(res);
@@ -300,6 +310,26 @@ export class ImageListComponent implements OnInit {
         this.images = images;
       });
 
+  }
+
+  toggleClickUpload() {
+    this.clickUpload = !this.clickUpload;
+  }
+
+  addComment(image, comment) {
+    // console.log(comment);
+    // console.log(image);
+    // const reviewIndex = document.getElementById('review').selectedIndex;
+    // const commentObj = {
+    //   comment: comment,
+    //   review: document.getElementsByTagName('option')[reviewIndex].value
+    // };
+    //
+    // this.commentService.saveCommentForImage(image.id, commentObj)
+    //   .then(() => {
+    //     alert('done bro');
+    //   })
+    // // alert(document.getElementsByTagName('option')[reviewIndex].value);
   }
 
 }

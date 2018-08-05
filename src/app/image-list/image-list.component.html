@@ -80,7 +80,7 @@
       <div class="project-font">
         <h1 class="float-left"> My Images </h1>
 
-        <!--<div class="float-right test-prop">-->
+        <div class="float-right">
           <!--<div class="circle-image-div">-->
             <!--<i class="fa fa-user circle-image-div-elem"></i>-->
           <!--</div>-->
@@ -90,9 +90,23 @@
           <!--<div class="circle-image-div">-->
             <!--<i class="fa fa-ellipsis-v circle-image-div-elem"></i>-->
           <!--</div>-->
-        <!--</div>-->
-        <div class="float-right">
-          <div class="circle-image-div primary-div">
+
+          <!--This part adds the images from directory-->
+          <form *ngIf="clickUpload" class="d-inline" method="post" enctype="multipart/form-data" action="/api/upload">
+            <input type="file" name="file"/>
+            <i type="submit" value="upload" class="circle-image-div-elem fa fa-check"></i>
+          </form>
+
+          <div class="circle-image-div" *ngIf="!clickUpload">
+            <i type="button" class="fa fa-plus circle-image-div-elem" (click)="toggleClickUpload()"></i>
+          </div>
+
+          <div class="circle-image-div" *ngIf="clickUpload">
+            <i type="button" class="fa fa-remove circle-image-div-elem" (click)="toggleClickUpload()"></i>
+          </div>
+
+          <!--This part adds the images from google drive-->
+          <div class="circle-image-div">
             <i type="button" class="fa fa-google circle-image-div-elem" id="auth" (click)="onApiLoad()"></i>
           </div>
         </div>
@@ -114,7 +128,41 @@
       <div class="card project-card">
         <!--<img id={{image.id}} class="card-img-top wbdv-card-img" [src]="image.src" alt="Card image cap">-->
         <div class="card-body">
-          <p class="card-text">{{image.name}}</p>
+          <div class="card-title">{{image.name}}</div>
+          <div class="card-text">
+            <!--<form [formGroup]="addCommentForm" novalidate (ngSubmit)="addComment(image)">-->
+              <!--<button type="button" class="fa fa-comment" data-toggle="modal" data-target="#addcommentmodal">CLICK ME</button>-->
+            <!--</form>-->
+            <!--&lt;!&ndash; Modal &ndash;&gt;-->
+            <!--<div class="modal fade" id="addcommentmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
+              <!--<div class="modal-dialog" role="document">-->
+                <!--<div class="modal-content">-->
+                  <!--<div class="modal-header">-->
+                    <!--<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                      <!--<span aria-hidden="true">&times;</span>-->
+                    <!--</button>-->
+                  <!--</div>-->
+                  <!--<div class="modal-body">-->
+                    <!--...-->
+                  <!--</div>-->
+                  <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <input
+            [(ngModel)]="comment"/>
+            <select id="review">
+              <option value="excellent">Excellent</option>
+              <option value="good">Good</option>
+              <option value="average">Average</option>
+              <option value="bad">Bad</option>
+            </select>
+            <i class="fa fa-comment" (click)="addComment(image, comment)"></i>
+          </div>
         </div>
       </div>
     </div>
