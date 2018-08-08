@@ -30,6 +30,7 @@ export class ImageListComponent implements OnInit {
   comments = [];
   comment;
   clickUpload = false;
+  srcPath;
 
   developerKey = 'AIzaSyBp_GUisXiOtYTYr5Z4ioHu54G87fkMK4s';
   clientId = '980576583017-vh5hhfqognajhlikef4jkmqs38leau6c.apps.googleusercontent.com';
@@ -140,7 +141,18 @@ export class ImageListComponent implements OnInit {
                 // 'contents': res
               };
               self.service.saveImageAndAddRecord(self.projectId, contents)
-                .then(saveRes => self.service.updateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType))
+                .then(saveRes => {
+                  // let file, a, url;
+                  // file = new File([res], 'filebro.png');
+                  // a = document.createElement('a');
+                  // url = URL.createObjectURL(file);
+                  // a.href = url;
+                  // a.download = './images/filebro.png';
+                  // document.body.appendChild(a);
+
+                  // file.save();
+                  self.service.upsdateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType);
+                })
                 .then(() => self.loadImages(self.projectId));
               });
             });
@@ -330,6 +342,41 @@ export class ImageListComponent implements OnInit {
     //     alert('done bro');
     //   })
     // // alert(document.getElementsByTagName('option')[reviewIndex].value);
+  }
+
+  img;
+
+  uploadFile(event) {
+    console.log(document.querySelector('.upload-img'));
+    console.log(event.target.files);
+    let file;
+    file = event.target.files[0];
+    let contents;
+    contents = {
+      name: file.name,
+      mimeType: file.type
+    };
+
+    self.img = new FileReader();
+    self.img.readAsDataURL(event.target.files[0]);
+
+    // console.log(self.img.blob());
+
+    this.service.saveImageAndAddRecord(this.projectId, contents)
+      .then(function (response) {
+        self.img = new FileReader();
+        self.img.readAsDataURL(event.target.files[0]);
+        // let file1, a, url;
+        // file1 = new File([event.target.files[0]], 'filebro.png');
+        // a = document.createElement('a');
+        // url = URL.createObjectURL(file1);
+        // a.href = url;
+        // a.download = './images/filebro.png';
+        // document.body.appendChild(a);
+        // a.click();
+        return self.service.updateImageRecordWithBlob(response.id, event.target.files[0], file.type);
+      })
+      .then(() => this.loadImages(this.projectId));
   }
 
 }

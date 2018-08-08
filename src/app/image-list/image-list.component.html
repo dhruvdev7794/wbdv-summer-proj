@@ -92,8 +92,8 @@
           <!--</div>-->
 
           <!--This part adds the images from directory-->
-          <form *ngIf="clickUpload" class="d-inline" method="post" enctype="multipart/form-data" action="/api/upload">
-            <input type="file" name="file"/>
+          <form *ngIf="clickUpload" class="d-inline" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="upload-img" ngModel="srcPath" (change)="uploadFile($event)"/>
             <i type="submit" value="upload" class="circle-image-div-elem fa fa-check"></i>
           </form>
 
@@ -125,6 +125,7 @@
 <div class="container">
   <div class="card-group" style="margin: 10px;">
     <div *ngFor="let image of images" class="col-4">
+      <a routerLink="/image/{{image.id}}/edit">
       <div class="card project-card">
         <!--<img id={{image.id}} class="card-img-top wbdv-card-img" [src]="image.src" alt="Card image cap">-->
         <div class="card-body">
@@ -165,6 +166,7 @@
           </div>
         </div>
       </div>
+      </a>
     </div>
   </div>
 </div>

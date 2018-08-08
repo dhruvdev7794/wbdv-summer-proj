@@ -17,7 +17,7 @@ export class ImageServiceClient {
     return fetch(this.IMAGE_SHORT_API_URL.replace(':IMAGEID', imageId), {
       method: 'PUT',
       body: content,
-      // headers: {'Content-Type' : mimeType}
+      headers: {'Content-Type' : mimeType}
     }).then(response => response.json());
   }
 }

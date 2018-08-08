@@ -10,13 +10,19 @@ import {ProjectServiceClient} from './services/project.service.client';
 import { ImageListComponent } from './image-list/image-list.component';
 import {ImageServiceClient} from './services/image.service.client';
 import {CommentServiceClient} from './services/comment.service.client';
+import { ImageDispComponent } from './image-disp/image-disp.component';
+import { ImageEditComponent } from './image-edit/image-edit.component';
+import { ImageModificationsComponent } from './image-modifications/image-modifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProjListComponent,
-    ImageListComponent
+    ImageListComponent,
+    ImageDispComponent,
+    ImageEditComponent,
+    ImageModificationsComponent
   ],
   imports: [
     BrowserModule,
