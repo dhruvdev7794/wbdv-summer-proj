@@ -14,6 +14,8 @@ import { ImageDispComponent } from './image-disp/image-disp.component';
 import { ImageEditComponent } from './image-edit/image-edit.component';
 import { ImageModificationsComponent } from './image-modifications/image-modifications.component';
 import { RegisterComponent } from './register/register.component';
+import {UserServiceClient} from './services/user.service.client';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { RegisterComponent } from './register/register.component';
     ImageDispComponent,
     ImageEditComponent,
     ImageModificationsComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { RegisterComponent } from './register/register.component';
   providers: [
     ProjectServiceClient,
     ImageServiceClient,
-    CommentServiceClient
+    CommentServiceClient,
+    UserServiceClient
   ],
   bootstrap: [
     AppComponent
