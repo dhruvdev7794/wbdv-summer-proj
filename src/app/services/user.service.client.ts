@@ -10,7 +10,7 @@ export class UserServiceClient {
     return fetch(this.LOGIN_API_URL, {
       method: 'POST',
       body: JSON.stringify(user),
-      credentials: 'same-origin',
+      // credentials: 'include',
       headers: {
         'content-type': 'application/json'
       }
@@ -23,7 +23,9 @@ export class UserServiceClient {
 
   profile() {
     return fetch(this.PROFILE_API_URL, {
-      credentials: 'same-origin'
+      headers: {
+        'content-type': 'application/json'
+      }
     }).then(res => res.json());
   }
   // register
@@ -31,7 +33,7 @@ export class UserServiceClient {
     return fetch(this.REGISTER_API_URL, {
       method: 'POST',
       body: JSON.stringify(user),
-      credentials: 'same-origin',
+      // credentials: 'include',
       headers: {
         'content-type': 'application/json'
       }

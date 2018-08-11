@@ -8,7 +8,9 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserServiceClient) { }
+  constructor(private userService: UserServiceClient) {
+    this.getProfile()
+  }
 
   username_val;
   password_val;
@@ -17,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  profile() {
+  getProfile() {
     this.userService.profile()
       .then(function (response) {
         this.username_val = response.username;
@@ -25,6 +27,10 @@ export class ProfileComponent implements OnInit {
         this.first_name_val = response.firstName;
         this.last_name_val = response.lastName;
       });
+  }
+
+  updateProfile() {
+    console.log('hi');
   }
 
 }
