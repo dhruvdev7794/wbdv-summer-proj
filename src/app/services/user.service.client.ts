@@ -23,6 +23,7 @@ export class UserServiceClient {
 
   profile() {
     return fetch(this.PROFILE_API_URL, {
+      credentials: 'same-origin',
       headers: {
         'content-type': 'application/json'
       }
