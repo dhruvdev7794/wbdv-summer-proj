@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {UserServiceClient} from '../services/user.service.client';
+let self;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
   password_val;
   username_val;
 
-  constructor() { }
+  constructor(private userService: UserServiceClient) {
+    self = this;
+  }
 
   ngOnInit() {
   }
@@ -37,6 +40,13 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.username_val);
     console.log(this.password_val);
+    const userObj = {
+      username: this.username_val,
+      password: this.password_val
+    };
+    this.userService.login(userObj)
+      .then(user => console.log(user));
+
   }
 
 

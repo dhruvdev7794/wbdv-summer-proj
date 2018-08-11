@@ -13,6 +13,7 @@ import {CommentServiceClient} from './services/comment.service.client';
 import { ImageDispComponent } from './image-disp/image-disp.component';
 import { ImageEditComponent } from './image-edit/image-edit.component';
 import { ImageModificationsComponent } from './image-modifications/image-modifications.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ImageModificationsComponent } from './image-modifications/image-modific
     ImageListComponent,
     ImageDispComponent,
     ImageEditComponent,
-    ImageModificationsComponent
+    ImageModificationsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
