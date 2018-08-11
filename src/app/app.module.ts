@@ -16,6 +16,7 @@ import { ImageModificationsComponent } from './image-modifications/image-modific
 import { RegisterComponent } from './register/register.component';
 import {UserServiceClient} from './services/user.service.client';
 import { ProfileComponent } from './profile/profile.component';
+import {ProjectFilterPipe} from './proj-list/project-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
     ImageEditComponent,
     ImageModificationsComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProjectFilterPipe
   ],
   imports: [
     BrowserModule,

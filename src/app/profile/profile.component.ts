@@ -9,7 +9,7 @@ import {UserServiceClient} from '../services/user.service.client';
 export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserServiceClient) {
-    this.getProfile()
+    this.getProfile();
   }
 
   username_val;

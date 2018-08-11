@@ -12,7 +12,7 @@ export class ProjListComponent implements OnInit {
   constructor(private service: ProjectServiceClient) {
     self = this;
   }
-
+  searchProj;
   projects = [];
 
   ngOnInit() {
