@@ -36,7 +36,7 @@ export class UserServiceClient {
   }
   // delete user
   deleteUser(userId) {
-    return fetch(this.USER_API_URL + '/' + userId,{
+    return fetch(this.USER_API_URL + '/' + userId, {
       method: 'DELETE'
     });
   }
@@ -66,7 +66,7 @@ export class UserServiceClient {
   }
   // update user
   updateUser(userId, user) {
-    return fetch(this.USER_API_URL + '/' + userId,{
+    return fetch(this.USER_API_URL + '/' + userId, {
       method: 'PUT',
       body: JSON.stringify(user),
       headers: {
