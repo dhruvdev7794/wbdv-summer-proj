@@ -35,7 +35,14 @@
 </header>
 <div class="padding-heading"></div>
 <div class="container">
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchProj"/>
+  </div>
+  <select>
+    <option *ngFor="let project of projects | projectFilter:searchProj">{{project.projName}}</option>
+  </select>
   <div class="card-group" style="margin: 10px;">
+
     <div *ngFor="let project of projects" class="col-4">
 
       <div class="card project-card">

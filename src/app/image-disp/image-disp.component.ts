@@ -10,6 +10,11 @@ export class ImageDispComponent implements OnInit {
 
   imageId;
   src;
+  mouseDownX;
+  mouseDownY;
+  height;
+  width;
+  hotspotStyle;
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
   }
@@ -23,9 +28,42 @@ export class ImageDispComponent implements OnInit {
   }
 
   loadImage(imageId) {
-    console.log(imageId);
     fetch('http://localhost:8080/api/image/' + imageId)
       .then(res => this.src = res);
+  }
+
+  intializeCoordinates(event) {
+    this.mouseDownX = event.clientX;
+    this.mouseDownY = event.clientY;
+  }
+
+  calculatePosition(event) {
+    this.width = event.clientX - this.mouseDownX ;
+    this.height = event.clientY - this.mouseDownY;
+    console.log([
+      this.width,
+      this.height
+    ]);
+  }
+
+  hotspotDone(event) {
+    console.log([
+      this.width,
+      this.height
+    ]);
+    this.setStyles();
+  }
+
+  setStyles() {
+    this.hotspotStyle = {
+      'top': this.mouseDownY + 'px',
+      'left': this.mouseDownX + 'px',
+      'width': this.width + 'px',
+      'height': this.height + 'px',
+      'background-color': 'red',
+      'z-index': '10000000000',
+      'position': 'absolute'
+    };
   }
 
 }

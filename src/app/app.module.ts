@@ -13,6 +13,10 @@ import {CommentServiceClient} from './services/comment.service.client';
 import { ImageDispComponent } from './image-disp/image-disp.component';
 import { ImageEditComponent } from './image-edit/image-edit.component';
 import { ImageModificationsComponent } from './image-modifications/image-modifications.component';
+import { RegisterComponent } from './register/register.component';
+import {UserServiceClient} from './services/user.service.client';
+import { ProfileComponent } from './profile/profile.component';
+import {ProjectFilterPipe} from './proj-list/project-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { ImageModificationsComponent } from './image-modifications/image-modific
     ImageListComponent,
     ImageDispComponent,
     ImageEditComponent,
-    ImageModificationsComponent
+    ImageModificationsComponent,
+    RegisterComponent,
+    ProfileComponent,
+    ProjectFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { ImageModificationsComponent } from './image-modifications/image-modific
   providers: [
     ProjectServiceClient,
     ImageServiceClient,
-    CommentServiceClient
+    CommentServiceClient,
+    UserServiceClient
   ],
   bootstrap: [
     AppComponent
