@@ -23,11 +23,13 @@ export class UserServiceClient {
 
   profile() {
     return fetch(this.PROFILE_API_URL, {
-      credentials: 'same-origin',
+      // credentials: 'include',
       headers: {
         'content-type': 'application/json'
       }
-    }).then(res => res.json());
+    }).then(res => {
+      return res.json();
+    });
   }
   // register
   register(user) {
