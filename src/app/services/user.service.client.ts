@@ -10,10 +10,11 @@ export class UserServiceClient {
     return fetch(this.LOGIN_API_URL, {
       method: 'POST',
       body: JSON.stringify(user),
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'content-type': 'application/json'
-      }
+      },
+      mode: 'cors'
     }).then(function (response) {
       return response.json();
 
@@ -23,13 +24,13 @@ export class UserServiceClient {
 
   profile() {
     return fetch(this.PROFILE_API_URL, {
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'content-type': 'application/json'
-      }
+      },
+      mode: 'cors'
     }).then(function (response) {
-      // return response.json();
-
+      return response.json();
     });
   }
   // register
@@ -43,8 +44,7 @@ export class UserServiceClient {
       }
     }).then(function (response) {
       return response.json();
-
-    });
+      });
   }
   // // delete user
   // deleteUser(userId) {

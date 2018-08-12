@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +13,9 @@ export class ProfileComponent implements OnInit {
     this.getProfile();
   }
 
+
+
+
   username_val;
   password_val;
   first_name_val;
@@ -23,7 +27,7 @@ export class ProfileComponent implements OnInit {
     this.userService.profile()
       .then(function (response) {
         console.log(response);
-        this.username_val = response.username_val;
+        this.username_val = response.username;
         this.password_val = response.password;
         this.first_name_val = response.firstName;
         this.last_name_val = response.lastName;
@@ -33,7 +37,6 @@ export class ProfileComponent implements OnInit {
   updateProfile() {
     console.log('hi');
   }
-
 
 
 
