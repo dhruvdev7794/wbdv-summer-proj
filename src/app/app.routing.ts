@@ -6,13 +6,18 @@ import {LoginComponent} from './login/login.component';
 import {ImageModificationsComponent} from './image-modifications/image-modifications.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
+import {UsersComponent} from './users/users.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'home', component: ProjListComponent},
+  {path: 'users', component: UsersComponent},
+  {path: 'user', component: UserInfoComponent},
+  {path: 'user/:userId', component: UserInfoComponent},
+  {path: 'projects', component: ProjListComponent},
   {path: 'project/:id/image', component: ImageListComponent},
   {path: 'image/:imageId/edit', component: ImageModificationsComponent}
 ];

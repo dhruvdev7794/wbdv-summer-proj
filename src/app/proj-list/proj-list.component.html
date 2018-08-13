@@ -4,11 +4,12 @@
 <header>
 
   <div class="fixed-top">
-        <span class="float-right"
-              style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
-            <i class="fa fa-user"></i> Megan Fox
-        </span>
-
+    <a routerLink="/profile">
+      <span class="float-right"
+            style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
+        <i class="fa fa-user"></i> {{user.firstName}}
+      </span>
+    </a>
     <div class="wbdv-header">
       <div class="project-font">
         <h1 class="float-left"> My Projects </h1>
@@ -35,21 +36,26 @@
 </header>
 <div class="padding-heading"></div>
 <div class="container">
-  <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="searchProj"/>
+  <div style="margin: 20px;" class="row">
+
+    <input type="text" class="col-3 form-control" [(ngModel)]="searchProj"/>
+    <select type="number" class="col-3" [(ngModel)]="projectObj">
+      <option *ngFor="let project of projects | projectFilter:searchProj" [ngValue]="project">{{project.projName}}</option>
+    </select>
+    <select type="number" class="col-3" [(ngModel)]="roleObj">
+      <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+    </select>
+    <i class="col-3 fa fa-check fa fa-2x" (click)="addProjectForUser()"></i>
   </div>
-  <select>
-    <option *ngFor="let project of projects | projectFilter:searchProj">{{project.projName}}</option>
-  </select>
   <div class="card-group" style="margin: 10px;">
 
-    <div *ngFor="let project of projects" class="col-4">
+    <div *ngFor="let project of userProjects" class="col-4">
 
       <div class="card project-card">
-        <a routerLink="/project/{{project.id}}/image">
+        <a routerLink="/project/{{project.project.id}}/image">
           <img class="card-img-top wbdv-card-img" src="./images/color-bg.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-title">{{project.projName}}</p>
+            <p class="card-title">{{project.project.projName}}</p>
           </div>
         </a>
         <div>

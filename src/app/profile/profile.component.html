@@ -52,6 +52,9 @@
               <br>
             </div>
           </form>
+          <ul *ngIf="username_val === 'admin'" class="list-group">
+            <li class="list-group-item"><a routerLink="/users">All Users</a> </li>
+          </ul>
         </div>
       </div>
     </div>

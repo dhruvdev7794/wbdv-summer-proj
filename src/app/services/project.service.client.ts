@@ -8,6 +8,7 @@ export class ProjectServiceClient {
   addProject(projectName) {
     return fetch(this.PROJECT_API_URL, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({'projName': projectName}),
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json());
@@ -17,5 +18,14 @@ export class ProjectServiceClient {
     return fetch(this.PROJECT_API_URL + '/' + projectId, {
       method: 'DELETE',
     });
+  }
+
+  addProjectToUser(project) {
+    return fetch(this.PROJECT_API_URL, {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify(project),
+      headers: {'Content-Type': 'application/json'}
+    }).then(res => res.json());
   }
 }
