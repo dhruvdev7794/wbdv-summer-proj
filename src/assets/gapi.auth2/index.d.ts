@@ -110,7 +110,7 @@ declare namespace gapi.auth2 {
    */
   interface OfflineAccessOptions {
     scope?: string;
-    prompt?: "select_account" | "consent";
+    prompt?: 'select_account' | 'consent';
     app_package_name?: string;
   }
 
@@ -157,7 +157,7 @@ declare namespace gapi.auth2 {
      * The UX mode to use for the sign-in flow.
      * By default, it will open the consent flow in a popup.
      */
-    ux_mode?: "popup" | "redirect";
+    ux_mode?: 'popup' | 'redirect';
 
     /**
      * If using ux_mode='redirect', this parameter allows you to override the default redirect_uri that will be used at the end of the consent flow.

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 let self;
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -23,14 +25,12 @@ export class ProfileComponent implements OnInit {
   getProfile() {
     this.userService.profile()
       .then(function (response) {
-
         console.log(response);
 
         self.username_val = response.username;
         self.password_val = response.password;
         self.first_name_val = response.firstName;
         self.last_name_val = response.lastName;
-
       });
   }
 
@@ -45,5 +45,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(this.userId, user)
       .then(() => this.getProfile());
   }
+
+
 
 }

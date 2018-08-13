@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+  body,h1,h2,h3,h4,h5 {font-family: "Poppins", Roboto}
+  body {font-size:16px;}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+  .w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Web Development<br>CS5610</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="#designers" onclick="close()" class="w3-bar-item w3-button w3-hover-white">Designers</a>
+    <a href="#packages" onclick="close()" class="w3-bar-item w3-button w3-hover-white">Project</a>
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="open()">☰</a>
+  <span>Web Development CS5610</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-black"><b>About.</b></h1>
+    <hr style="width:50px;border:5px solid black" class="w3-round">
+    <p>Web Development: Project Platform Summer 2018 </p>
+    <p>This application is a platform where web and mobile developers can showcase their idea(s) as a prototype. Giving the audience an opportunity to see how the application will work and what it might look like.
+    </p>
+  </div>
+
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-black"><b>Designers.</b></h1>
+
+    <!-- The Team -->
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="https://image.ibb.co/gQDwap/dhruv.jpg" alt="Dhruv" style="width:100%">
+          <div class="w3-container">
+            <h3>Dhruv Sharma</h3>
+            <p class="w3-opacity">Masters in Computer Science</p>
+            <p>Northeastern University, Boston MA.</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="https://image.ibb.co/iJLbrU/jess.jpg" alt="Jess" style="width:100%">
+          <div class="w3-container">
+            <h3>Jessica Gonzalez</h3>
+            <p class="w3-opacity">Masters in Computer Science</p>
+            <p>Northeastern University, Boston MA.</p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Project-->
+  <div class="w3-container" id="packages" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-black"><b>Project.</b></h1>
+    <hr style="width:50px;border:5px solid black" class="w3-round">
+    <p>Project link goes here</p>
+  </div>
+
+
+
+  <!-- End page content -->
+</div>
+
+<!-- Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right"></p></div>
+
+<script>
+  // Script to open and close sidebar
+  function open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  function close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+</script>
+
+</body>
+</html>

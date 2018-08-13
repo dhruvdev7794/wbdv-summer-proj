@@ -8,6 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {UsersComponent} from './users/users.component';
 import {UserInfoComponent} from './user-info/user-info.component';
+import {HomePageComponent} from './home-page/home-page.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'users', component: UsersComponent},
+  {path: 'home', component: HomePageComponent},
   {path: 'user', component: UserInfoComponent},
   {path: 'user/:userId', component: UserInfoComponent},
   {path: 'projects', component: ProjListComponent},

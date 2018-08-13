@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {ProjectFilterPipe} from './proj-list/project-filter.pipe';
 import { UsersComponent } from './users/users.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ProfileComponent,
     ProjectFilterPipe,
     UsersComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

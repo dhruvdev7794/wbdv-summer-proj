@@ -13,7 +13,8 @@ export class UserServiceClient {
       credentials: 'include',
       headers: {
         'content-type': 'application/json'
-      }
+      },
+      mode: 'cors'
     }).then(function (response) {
       return response.json();
 
@@ -43,8 +44,7 @@ export class UserServiceClient {
       }
     }).then(function (response) {
       return response.json();
-
-    });
+      });
   }
   // delete user
   deleteUser(userId) {
