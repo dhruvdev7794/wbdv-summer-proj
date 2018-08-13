@@ -21,7 +21,7 @@ export class ProjectServiceClient {
   }
 
   addProjectToUser(project) {
-    return fetch(this.PROJECT_API_URL, {
+    return fetch(this.PROJECT_API_URL + '/' + project.id, {
       method: 'PUT',
       credentials: 'include',
       body: JSON.stringify(project),
