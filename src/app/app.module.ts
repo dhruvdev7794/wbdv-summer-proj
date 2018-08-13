@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import {UserServiceClient} from './services/user.service.client';
 import { ProfileComponent } from './profile/profile.component';
 import {ProjectFilterPipe} from './proj-list/project-filter.pipe';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {ProjectFilterPipe} from './proj-list/project-filter.pipe';
     ImageModificationsComponent,
     RegisterComponent,
     ProfileComponent,
-    ProjectFilterPipe
+    ProjectFilterPipe,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
