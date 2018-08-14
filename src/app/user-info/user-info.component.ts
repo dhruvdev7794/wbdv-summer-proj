@@ -32,13 +32,11 @@ export class UserInfoComponent implements OnInit {
   loadUserInfo() {
     this.userService.findUserById(this.userId)
       .then(user => {
-        console.log(user);
         this.username_val = user.username;
         this.password_val = user.password;
         this.v_password_fld = user.password;
         this.first_name = user.firstName;
         this.last_name = user.lastName;
-        console.log(this.username_val);
       });
   }
 

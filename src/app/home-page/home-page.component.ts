@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserServiceClient} from '../services/user.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: UserServiceClient,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
+  login() {
+    const userObj = {
+      username: 'guest',
+      password: 'guest'
+    };
+
+    this.service.login(userObj)
+      .then(() => this.router.navigate(['projects']));
+  }
 }

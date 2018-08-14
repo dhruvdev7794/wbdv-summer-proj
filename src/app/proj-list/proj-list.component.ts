@@ -25,9 +25,9 @@ export class ProjListComponent implements OnInit {
   userId;
   projId;
   projectObj;
-  user;
   roles = ['contributor', 'reader'];
   roleObj;
+  user;
   projUsers = [];
   images = [];
 
@@ -75,7 +75,10 @@ export class ProjListComponent implements OnInit {
       //   })
       //   .then(() => self.findAllProjects());
       this.service.addProject(proj_name)
-        .then(() => self.findAllProjects());
+        .then(project => {
+          self.findAllProjects();
+          this.findProjectforUser();
+        });
     }
   }
 
@@ -84,7 +87,10 @@ export class ProjListComponent implements OnInit {
     const del = confirm('Are you sure you want to remove the Project?');
     if (del === true) {
       this.service.deleteProjects(project.project.id)
-        .then(() => self.findAllProjects());
+        .then(() => {
+          self.findAllProjects();
+          this.findProjectforUser();
+        });
     }
   }
 
@@ -127,22 +133,12 @@ export class ProjListComponent implements OnInit {
               });
           });
       });
-
-
-    // this.projectObj.role = this.roleObj;
-    // now
-    // console.log(this.user);
-    // this.userService.updateUser(this.userId, this.projectObj)
-    //   .then(() => this.findProjectforUser());
-    // this.service.addProjectToUser(this.projectObj)
-    //   .then(() => this.findProjectforUser());
   }
   getProfile() {
     this.userService.profile()
       .then(function (user) {
         self.userId = user.id;
         self.user = user;
-        console.log(user);
         self.findAllProjects();
         self.findProjectforUser();
         console.log(self.user);

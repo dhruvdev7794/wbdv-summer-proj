@@ -39,15 +39,12 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    console.log(this.username_val);
-    console.log(this.password_val);
     const userObj = {
       username: this.username_val,
       password: this.password_val
     };
     this.service.login(userObj)
       .then(() => this.router.navigate(['projects']));
-
   }
 
 
