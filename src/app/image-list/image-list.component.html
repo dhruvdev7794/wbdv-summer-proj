@@ -80,7 +80,8 @@
       <div class="project-font">
         <h1 class="float-left"> My Images </h1>
 
-        <div class="float-right">
+        <div *ngIf="role === 'admin' || role ==='owner' || role === 'contributor'"
+             class="float-right">
           <!--<div class="circle-image-div">-->
             <!--<i class="fa fa-user circle-image-div-elem"></i>-->
           <!--</div>-->

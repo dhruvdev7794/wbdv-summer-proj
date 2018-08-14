@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {ImageServiceClient} from '../services/image.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {CommentServiceClient} from '../services/comment.service.client';
+import {UserServiceClient} from '../services/user.service.client';
 // import Global = NodeJS.Global;
 declare var $;
 let self;
@@ -17,6 +18,7 @@ export class ImageListComponent implements OnInit {
 
   constructor(private service: ImageServiceClient,
               private commentService: CommentServiceClient,
+              private userService: UserServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
     self = this;
@@ -25,13 +27,14 @@ export class ImageListComponent implements OnInit {
 
   //
   images = [];
+  project;
   projectId;
   authBtn;
   comments = [];
   comment;
   clickUpload = false;
   srcPath;
-
+  role;
   developerKey = 'AIzaSyBp_GUisXiOtYTYr5Z4ioHu54G87fkMK4s';
   clientId = '980576583017-vh5hhfqognajhlikef4jkmqs38leau6c.apps.googleusercontent.com';
   scope = 'https://www.googleapis.com/auth/drive';
@@ -41,8 +44,10 @@ export class ImageListComponent implements OnInit {
   message;
   doc;
   url;
+  i;
   fileId;
   request;
+  img;
 
   myToken;
   myXHR = new XMLHttpRequest();
@@ -151,9 +156,9 @@ export class ImageListComponent implements OnInit {
                   // document.body.appendChild(a);
 
                   // file.save();
-                  self.service.upsdateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType);
-                })
-                .then(() => self.loadImages(self.projectId));
+                  return self.service.updateImageRecordWithBlob(saveRes.id, res, fileJson.mimeType)
+                    .then(() => self.loadImages(self.projectId));
+                });
               });
             });
           // const objUrl = window.URL.createObjectURL(res);
@@ -295,8 +300,21 @@ export class ImageListComponent implements OnInit {
 
 
   setParams(params) {
+
     this.projectId = params['id'];
     this.loadImages(this.projectId);
+    this.userService.profile()
+      .then(user => {
+        for (this.i = 0; this.i < user.projects.length; this.i++) {
+          // console.log(user.projects[this.i].project.id);
+          // console.log(this.projectId);
+          if (user.projects[this.i].project.id === Number.parseInt(this.projectId)) {
+            this.project = user.projects[this.i];
+            this.role = this.project.role;
+            console.log(this.role);
+          }
+        }
+      });
   }
 
   ngOnInit() {
@@ -344,7 +362,7 @@ export class ImageListComponent implements OnInit {
     // // alert(document.getElementsByTagName('option')[reviewIndex].value);
   }
 
-  img;
+
 
   uploadFile(event) {
     console.log(document.querySelector('.upload-img'));
