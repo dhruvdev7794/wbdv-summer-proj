@@ -10,15 +10,20 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserServiceClient) {
+  constructor(private userService: UserServiceClient,
+              private router: Router) {
     self = this;
     this.getProfile();
+    this.setUsers();
   }
   userId;
   username_val;
   password_val;
   first_name_val;
   last_name_val;
+  users = [];
+  followers = [];
+  userObject;
   ngOnInit() {
   }
 
@@ -26,11 +31,36 @@ export class ProfileComponent implements OnInit {
     this.userService.profile()
       .then(function (response) {
         console.log(response);
-
+        self.userId = response.id;
         self.username_val = response.username;
         self.password_val = response.password;
         self.first_name_val = response.firstName;
         self.last_name_val = response.lastName;
+        self.getFollowers();
+        return null;
+      });
+  }
+
+  addFollower() {
+    const follower = this.userObject.firstName + ' ' + this.userObject.lastName;
+    // console.log(this.userId);
+    this.userService.addFollower(this.userId, follower)
+      .then((fo) => {
+        this.getFollowers();
+      });
+
+  }
+
+  setUsers() {
+    this.userService.findAllUser()
+        .then(users => this.users = users);
+  }
+
+  getFollowers() {
+    this.userService.getFollowers(this.userId)
+      .then(followers => {
+        this.followers = followers;
+        console.log(this.followers);
       });
   }
 
@@ -43,7 +73,10 @@ export class ProfileComponent implements OnInit {
       lastName: this.last_name_val,
     };
     this.userService.updateUser(this.userId, user)
-      .then(() => this.getProfile());
+      .then(() => {
+        this.getProfile();
+        this.router.navigate(['projects']);
+      });
   }
 
 
