@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <input [(ngModel)]="comment"/>
-  <select id="review">
-    <option value="excellent">Excellent</option>
-    <option value="good">Good</option>
-    <option value="average">Average</option>
-    <option value="bad">Bad</option>
+  <select id="review" [(ngModel)]="reviewSelect">
+    <option *ngFor="let val of values" [ngValue]="val">{{val}}</option>
+    <!--<option value="good">Good</option>-->
+    <!--<option value="average">Average</option>-->
+    <!--<option value="bad">Bad</option>-->
   </select>
   <i class="fa fa-comment" (click)="addComment()"></i>
   <hr/>

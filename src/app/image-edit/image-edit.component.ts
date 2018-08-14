@@ -11,8 +11,10 @@ import {ImageServiceClient} from '../services/image.service.client';
 export class ImageEditComponent implements OnInit {
 
   comment;
+  reviewSelect;
   imageId;
   comments;
+  values = ['excellent', 'good', 'average', 'bad'];
   constructor(private route: ActivatedRoute,
               private commentService: CommentServiceClient,
               private imageService: ImageServiceClient) {
@@ -27,22 +29,14 @@ export class ImageEditComponent implements OnInit {
   }
 
   addComment() {
-    console.log(this.comment);
-    console.log(this.imageId);
-    const reviewIndex = document.getElementById('review').selectedIndex;
-    console.log(reviewIndex);
 
     const commentObj = {
       comment: this.comment,
-      review: document.getElementsByTagName('option')[reviewIndex].value
+      review: this.reviewSelect
     };
 
     this.commentService.saveCommentForImage(this.imageId, commentObj)
       .then(() => this.loadComments());
-    // this.imageService.findImageById(this.imageId)
-    //   .then(image => {
-    //     console.log(image);
-    //   });
 
   }
 

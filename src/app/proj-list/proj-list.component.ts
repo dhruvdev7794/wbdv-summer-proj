@@ -18,7 +18,7 @@ export class ProjListComponent implements OnInit {
   projects = [];
   userProjects = [];
   project;
-  userId=1;
+  userId;
   projId;
   projectObj;
   user;
