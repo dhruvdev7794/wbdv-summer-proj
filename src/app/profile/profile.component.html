@@ -1,5 +1,12 @@
 <div class="wbdv-header">
   <div class="project-font">
+    <span class="float-right"
+          style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
+        <a routerLink="/profile">
+          <i class="fa fa-user"></i> {{user.firstName}}
+        </a>
+        <i (click)="logout()" class="fa fa-power-off"></i>
+      </span>
     <h1 class="float-left"> Profile </h1>
   </div>
 </div>
@@ -57,7 +64,7 @@
             </div>
           </form>
           <ul *ngIf="username_val === 'admin'" class="list-group">
-            <li class="list-group-item"><a routerLink="/users">All Users</a> </li>
+            <li class="list-group-item"><a routerLink="/users">Users and Projects information</a> </li>
           </ul>
           <hr>
           <h6>Select user to follow</h6>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {ImageServiceClient} from '../services/image.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CommentServiceClient} from '../services/comment.service.client';
 import {UserServiceClient} from '../services/user.service.client';
 // import Global = NodeJS.Global;
@@ -19,6 +19,7 @@ export class ImageListComponent implements OnInit {
   constructor(private service: ImageServiceClient,
               private commentService: CommentServiceClient,
               private userService: UserServiceClient,
+              private router: Router,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
     self = this;
@@ -403,6 +404,11 @@ export class ImageListComponent implements OnInit {
         return self.service.updateImageRecordWithBlob(response.id, event.target.files[0], file.type);
       })
       .then(() => this.loadImages(this.projectId));
+  }
+
+  logout() {
+    this.userService.logout()
+      .then(() => this.router.navigate(['login']));
   }
 
 }

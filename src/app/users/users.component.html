@@ -13,8 +13,24 @@
           <h2>Welcome admin</h2>
         </div>
       </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of users">
+          {{user.firstName}}
+
+          <i class="fa fa-trash float-right" (click)="deleteUser(user)"></i>
+          <a routerLink="/user/{{user.id}}">
+            <i class="fa fa-pencil float-right"></i>
+          </a>
+        </li>
+      </ul>
       <a routerLink="/user">
-        <div class="float-right test-prop">
+        <div class="test-prop">
           <div class="circle-image-div">
             <i class="fa fa-plus circle-image-div-elem"></i>
           </div>
@@ -22,19 +38,22 @@
       </a>
     </div>
 
-  </div>
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let project of projects">
+          {{project.projName}}
 
-  <div>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let user of users">
-        {{user.firstName}}
+          <i class="fa fa-trash float-right" (click)="deleteProject(project)"></i>
+          <i class="fa fa-pencil float-right" (click)="editProjectName(project)"></i>
+        </li>
+      </ul>
+      <div (click)="addProject()" class="test-prop">
+        <div class="circle-image-div">
+          <i class="fa fa-plus circle-image-div-elem"></i>
+        </div>
+      </div>
+    </div>
 
-        <i class="fa fa-trash float-right" (click)="deleteUser(user)"></i>
-        <a routerLink="/user/{{user.id}}">
-          <i class="fa fa-pencil float-right"></i>
-        </a>
-      </li>
-    </ul>
   </div>
 
 </div>

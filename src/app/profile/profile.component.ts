@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   users = [];
   followers = [];
   userObject;
+  user;
   ngOnInit() {
   }
 
@@ -31,6 +32,7 @@ export class ProfileComponent implements OnInit {
     this.userService.profile()
       .then(function (response) {
         console.log(response);
+        self.user = response;
         self.userId = response.id;
         self.username_val = response.username;
         self.password_val = response.password;
@@ -41,6 +43,10 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  logout() {
+    this.userService.logout()
+      .then(() => this.router.navigate(['login']));
+  }
   addFollower() {
     const follower = this.userObject.firstName + ' ' + this.userObject.lastName;
     // console.log(this.userId);

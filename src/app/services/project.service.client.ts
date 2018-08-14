@@ -28,4 +28,13 @@ export class ProjectServiceClient {
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json());
   }
+
+  editProjectName(projname, projId) {
+    return fetch(this.PROJECT_API_URL + '/' + projId, {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify({projName: projname}),
+      headers: {'Content-Type': 'application/json'}
+    }).then(res => res.json());
+  }
 }

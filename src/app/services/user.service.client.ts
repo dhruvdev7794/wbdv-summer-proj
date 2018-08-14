@@ -86,13 +86,13 @@ export class UserServiceClient {
   // update user
   updateUser(userId, user) {
     return fetch(this.USER_API_URL + '/' + userId, {
-      method: 'POST',
+        method: 'POST',
         credentials: 'include',
-      body: JSON.stringify(user),
-      headers: {
-        'content-type': 'application/json'
-      }}
-      ).then(res => res.json());
+        body: JSON.stringify(user),
+        headers: {
+          'content-type': 'application/json'
+        }
+    }).then(res => res.json());
   }
 
   addFollower(userId, follower) {
