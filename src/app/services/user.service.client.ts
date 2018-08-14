@@ -1,9 +1,9 @@
 export class UserServiceClient {
 
-  LOGIN_API_URL = 'http://localhost:8080/api/login';
-  REGISTER_API_URL = 'http://localhost:8080/api/register';
-  USER_API_URL = 'http://localhost:8080/api/user';
-  PROFILE_API_URL = 'http://localhost:8080/api/profile';
+  LOGIN_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/login';
+  REGISTER_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/register';
+  USER_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/user';
+  PROFILE_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/profile';
 
   // login
   login(user) {
@@ -96,7 +96,7 @@ export class UserServiceClient {
   }
 
   addFollower(userId, follower) {
-    return fetch('http://localhost:8080/api/follow/' + userId, {
+    return fetch('https://wbdv-project-java-jpa.herokuapp.com/api/follow/' + userId, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({follower: follower}),
@@ -107,7 +107,7 @@ export class UserServiceClient {
   }
 
   getFollowers(userId) {
-    return fetch('http://localhost:8080/api/follow/' + userId)
+    return fetch('https://wbdv-project-java-jpa.herokuapp.com/api/follow/' + userId)
       .then(res => res.json());
   }
 }
