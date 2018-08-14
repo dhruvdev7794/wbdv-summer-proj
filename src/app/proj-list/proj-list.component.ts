@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectServiceClient} from '../services/project.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {ImageServiceClient} from '../services/image.service.client';
+import {Router} from '@angular/router';
 let self;
 @Component({
   selector: 'app-proj-list',
@@ -11,7 +13,9 @@ let self;
 export class ProjListComponent implements OnInit {
 
   constructor(private service: ProjectServiceClient,
-              private userService: UserServiceClient) {
+              private userService: UserServiceClient,
+              private router: Router,
+              private imageService: ImageServiceClient) {
     self = this;
   }
   searchProj;
@@ -24,6 +28,8 @@ export class ProjListComponent implements OnInit {
   user;
   roles = ['contributor', 'reader'];
   roleObj;
+  projUsers = [];
+  images = [];
 
   ngOnInit() {
     this.getProfile();
@@ -41,6 +47,11 @@ export class ProjListComponent implements OnInit {
         this.userProjects = user.projects;
         console.log(this.userProjects);
       });
+  }
+
+  logout() {
+    this.userService.logout()
+      .then(() => this.router.navigate(['login']));
   }
 
   addProject() {
@@ -69,26 +80,62 @@ export class ProjListComponent implements OnInit {
   }
 
   deleteProj(project) {
+    console.log(project);
     const del = confirm('Are you sure you want to remove the Project?');
     if (del === true) {
-      this.service.deleteProjects(project.id)
+      this.service.deleteProjects(project.project.id)
         .then(() => self.findAllProjects());
     }
   }
 
   addProjectForUser() {
-    this.user.projects.push({
-      role: this.roleObj,
-      project: this.projectObj
-    });
+    // console.log(this.projectObj);
+    // this.user.projects.push({
+    //   role: this.roleObj,
+    //   project: this.projectObj
+    // });
+
+    // first get all users with same id and make an array
+    this.imageService.findAllImages(this.projectObj.id)
+      .then(images => this.images = images)
+      .then(() => {
+        this.userService.findAllUser()
+          .then(users => {
+            // for
+            users.forEach(function (user) {
+              user.projects.forEach(function (proj) {
+                if (proj.project.id === self.projectObj.id) {
+                  self.projUsers.push(user);
+                }
+
+              });
+            });
+            return self.projUsers;
+          })
+          .then(users => {
+            return this.service.addProjectToUser(this.projectObj.projName, this.roleObj, users);
+          })
+          .then(project => {
+            // console.log(project);
+            this.user.projects.push({
+              role: this.roleObj,
+              project: project
+            });
+            this.imageService.updateImageProject(project.id, this.images)
+              .then(() => {
+                this.service.deleteProjects(this.projectObj.id);
+              });
+          });
+      });
+
 
     // this.projectObj.role = this.roleObj;
     // now
     // console.log(this.user);
     // this.userService.updateUser(this.userId, this.projectObj)
     //   .then(() => this.findProjectforUser());
-    this.service.addProjectToUser(this.projectObj)
-      .then(() => this.findProjectforUser());
+    // this.service.addProjectToUser(this.projectObj)
+    //   .then(() => this.findProjectforUser());
   }
   getProfile() {
     this.userService.profile()

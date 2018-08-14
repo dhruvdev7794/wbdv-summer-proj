@@ -1,5 +1,5 @@
 export class CommentServiceClient {
-  COMMENT_URL_API = 'https://wbdv-project-java-jpa.herokuapp.com/api/image/:IMGID/comment';
+  COMMENT_URL_API = 'http://localhost:8080/api/image/:IMGID/comment';
   findAllComments(imageId) {
     return fetch(this.COMMENT_URL_API.replace(':IMGID', imageId))
       .then(res => res.json());

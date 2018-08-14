@@ -4,12 +4,15 @@
 <header>
 
   <div>
-    <a routerLink="/profile">
+
       <span class="float-right"
             style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
-        <i class="fa fa-user"></i> {{user.firstName}}
+        <a routerLink="/profile">
+          <i class="fa fa-user"></i> {{user.firstName}}
+        </a>
+        <i (click)="logout()" class="fa fa-power-off"></i>
       </span>
-    </a>
+
     <div class="wbdv-header">
       <div class="project-font">
         <h1 class="float-left"> My Projects </h1>
@@ -27,7 +30,7 @@
         <!--</div>-->
         <div class="float-right">
           <div (click)="addProject()" class="circle-image-div primary-div">
-            <i class="fa fa-plus <<"></i>
+            <i class="fa fa-plus"></i>
           </div>
         </div>
       </div>

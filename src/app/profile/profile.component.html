@@ -72,9 +72,13 @@
             </div>
           </div>
           <h6>Following:</h6>
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let fo of followers">{{fo.follower}}</li>
-          </ul>
+          <div class="row">
+            <div class="col-6">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let fo of followers">{{fo.follower}}</li>
+              </ul>
+            </div>
+          </div>
 
         </div>
       </div>

@@ -1,5 +1,5 @@
 export class ProjectServiceClient {
-  PROJECT_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/projects';
+  PROJECT_API_URL = 'http://localhost:8080/api/projects';
   findAllProjects() {
     return fetch(this.PROJECT_API_URL)
       .then(response => response.json());
@@ -17,14 +17,14 @@ export class ProjectServiceClient {
   deleteProjects(projectId) {
     return fetch(this.PROJECT_API_URL + '/' + projectId, {
       method: 'DELETE',
-    });
+    }).then(() => null);
   }
 
-  addProjectToUser(project) {
-    return fetch('https://wbdv-project-java-jpa.herokuapp.com/api/userproj/' + project.id, {
+  addProjectToUser(projectName, role, user) {
+    return fetch('http://localhost:8080/api/userproj/name/' + projectName + '/role/' + role, {
       method: 'PUT',
       credentials: 'include',
-      body: JSON.stringify(project),
+      body: JSON.stringify(user),
       headers: {'Content-Type': 'application/json'}
     }).then(res => res.json());
   }

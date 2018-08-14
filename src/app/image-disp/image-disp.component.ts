@@ -28,7 +28,7 @@ export class ImageDispComponent implements OnInit {
   }
 
   loadImage(imageId) {
-    fetch('https://wbdv-project-java-jpa.herokuapp.com/api/image/' + imageId)
+    fetch('http://localhost:8080/api/image/' + imageId)
       .then(res => this.src = res);
   }
 

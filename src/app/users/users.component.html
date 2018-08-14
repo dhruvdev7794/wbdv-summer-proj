@@ -1,11 +1,15 @@
-<body style="background-color: #fa9591">
-<div class="container">
+<div class="wbdv-header">
+  <div class="project-font">
+    <h1 class="float-left"> Users </h1>
+  </div>
+</div>
+<hr/>
+<div *ngIf="user.username === 'admin' && user.password === 'admin'" class="container">
   <div class="container-fluid">
 
     <div class="vertical-center">
       <div class="outline-color">
         <div class="login-font">
-          <h1>Users: </h1>
           <h2>Welcome admin</h2>
         </div>
       </div>
@@ -34,11 +38,13 @@
   </div>
 
 </div>
+<div *ngIf="user.username !== 'admin' || user.password !== 'admin'">
+  Only admin has access
+</div>
 
 
 
 <!--</div>-->
-</body>
 <!--</html>-->
 
 

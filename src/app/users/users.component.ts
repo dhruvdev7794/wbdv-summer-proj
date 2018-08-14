@@ -9,9 +9,16 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService: UserServiceClient) {
     this.findAllUsers();
+    this.getProfile();
   }
   users;
+  user;
   ngOnInit() {
+  }
+
+  getProfile() {
+    this.userService.profile()
+      .then(user => this.user = user);
   }
 
   findAllUsers() {
