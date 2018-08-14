@@ -10,7 +10,7 @@ export class CommentServiceClient {
       headers: {
         'content-type': 'application/json'
       },
-      // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(comment)
     }).then(res => res.json());
   }

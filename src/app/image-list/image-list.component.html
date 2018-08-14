@@ -126,8 +126,9 @@
 <div class="container">
   <div class="card-group" style="margin: 10px;">
     <div *ngFor="let image of images" class="col-4">
-      <a routerLink="/image/{{image.id}}/edit">
+
       <div class="card project-card">
+        <a routerLink="/image/{{image.id}}/edit">
         <!--<img id={{image.id}} class="card-img-top wbdv-card-img" [src]="image.src" alt="Card image cap">-->
         <div class="card-body">
           <div class="card-title">{{image.name}}</div>
@@ -155,19 +156,23 @@
                 <!--</div>-->
               <!--</div>-->
             <!--</div>-->
-            <input
-            [(ngModel)]="comment"/>
-            <select id="review">
-              <option value="excellent">Excellent</option>
-              <option value="good">Good</option>
-              <option value="average">Average</option>
-              <option value="bad">Bad</option>
-            </select>
-            <i class="fa fa-comment" (click)="addComment(image, comment)"></i>
+
+
           </div>
         </div>
+        </a>
+        <!--<input-->
+          <!--[(ngModel)]="comment"/>-->
+        <!--<select id="review">-->
+          <!--<option value="excellent">Excellent</option>-->
+          <!--<option value="good">Good</option>-->
+          <!--<option value="average">Average</option>-->
+          <!--<option value="bad">Bad</option>-->
+        <!--</select>-->
+        <i class="fa fa-trash" (click)="deleteImage(image)"></i>
       </div>
-      </a>
+
+
     </div>
   </div>
 </div>

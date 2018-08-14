@@ -20,4 +20,14 @@ export class ImageServiceClient {
       headers: {'Content-Type' : mimeType}
     }).then(response => response.json());
   }
+  deleteImage(imageId) {
+    return fetch(this.IMAGE_SHORT_API_URL.replace(':IMAGEID', imageId), {
+      method: 'DELETE'
+    });
+  }
+  findImageById(imageId) {
+    return fetch('http://localhost:8080/api/imagedetails/:IMAGEID'.replace(':IMAGEID', imageId), {
+      method: 'GET'
+    }).then(res => res.json());
+  }
 }

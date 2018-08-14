@@ -317,6 +317,12 @@ export class ImageListComponent implements OnInit {
       });
   }
 
+  deleteImage(image) {
+    // console.log(this.projectId);
+    this.service.deleteImage(image.id)
+      .then(() => this.loadImages(this.projectId));
+  }
+
   ngOnInit() {
   }
 

@@ -1,3 +1,17 @@
-<p>
-  image-edit works!
-</p>
+<div class="container-fluid">
+  <input [(ngModel)]="comment"/>
+  <select id="review">
+    <option value="excellent">Excellent</option>
+    <option value="good">Good</option>
+    <option value="average">Average</option>
+    <option value="bad">Bad</option>
+  </select>
+  <i class="fa fa-comment" (click)="addComment()"></i>
+  <hr/>
+  <ul class="list-group">
+    <li class="list-group-item active"> Comments:</li>
+    <li class="list-group-item" *ngFor="let commentObj of comments">
+      {{commentObj.comment}} - {{commentObj.review}}
+    </li>
+  </ul>
+</div>
