@@ -1,6 +1,6 @@
 export class ImageServiceClient {
-  IMAGE_URL_API = 'http://localhost:8080/api/projects/:PROJID/images';
-  IMAGE_SHORT_API_URL = 'http://localhost:8080/api/image/:IMAGEID';
+  IMAGE_URL_API = 'https://wbdv-project-java-jpa.herokuapp.com/api/projects/:PROJID/images';
+  IMAGE_SHORT_API_URL = 'https://wbdv-project-java-jpa.herokuapp.com/api/image/:IMAGEID';
   findAllImages(projectId) {
     return fetch(this.IMAGE_URL_API.replace(':PROJID', projectId), {
       credentials: 'include'
@@ -30,13 +30,13 @@ export class ImageServiceClient {
     });
   }
   findImageById(imageId) {
-    return fetch('http://localhost:8080/api/imagedetails/:IMAGEID'.replace(':IMAGEID', imageId), {
+    return fetch('https://wbdv-project-java-jpa.herokuapp.com/api/imagedetails/:IMAGEID'.replace(':IMAGEID', imageId), {
       method: 'GET',
       credentials: 'include'
     }).then(res => res.json());
   }
   updateImageProject(projectId, images) {
-    return fetch('http://localhost:8080/api/image/newProj/' + projectId, {
+    return fetch('https://wbdv-project-java-jpa.herokuapp.com/api/image/newProj/' + projectId, {
       method: 'PUT',
       body: JSON.stringify(images),
       headers: {'Content-Type' : 'application/json'},
