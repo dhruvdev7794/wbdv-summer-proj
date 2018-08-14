@@ -44,6 +44,7 @@ export class ImageListComponent implements OnInit {
   message;
   doc;
   url;
+  user;
   i;
   fileId;
   request;
@@ -305,6 +306,7 @@ export class ImageListComponent implements OnInit {
     this.loadImages(this.projectId);
     this.userService.profile()
       .then(user => {
+        this.user = user;
         for (this.i = 0; this.i < user.projects.length; this.i++) {
           // console.log(user.projects[this.i].project.id);
           // console.log(this.projectId);

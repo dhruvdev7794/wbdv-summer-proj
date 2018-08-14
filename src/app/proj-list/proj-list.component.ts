@@ -95,6 +95,7 @@ export class ProjListComponent implements OnInit {
       .then(function (user) {
         self.userId = user.id;
         self.user = user;
+        console.log(user);
         self.findAllProjects();
         self.findProjectforUser();
         console.log(self.user);

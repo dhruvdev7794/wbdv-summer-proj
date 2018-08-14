@@ -3,7 +3,7 @@
 
 <header>
 
-  <div class="fixed-top">
+  <div>
     <a routerLink="/profile">
       <span class="float-right"
             style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
@@ -27,7 +27,7 @@
         <!--</div>-->
         <div class="float-right">
           <div (click)="addProject()" class="circle-image-div primary-div">
-            <i class="fa fa-plus circle-image-div-elem"></i>
+            <i class="fa fa-plus <<"></i>
           </div>
         </div>
       </div>
@@ -37,14 +37,26 @@
 <div class="padding-heading"></div>
 <div class="container">
   <div style="margin: 20px;" class="row">
-
-    <input type="text" class="col-3 form-control" [(ngModel)]="searchProj"/>
-    <select type="number" class="col-3" [(ngModel)]="projectObj">
-      <option *ngFor="let project of projects | projectFilter:searchProj" [ngValue]="project">{{project.projName}}</option>
-    </select>
-    <select type="number" class="col-3" [(ngModel)]="roleObj">
-      <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
-    </select>
+    <div class="col-3">
+    <label>Search Project</label>
+      <input type="text" class="form-control" [(ngModel)]="searchProj"/>
+    </div>
+    <div class="col-3">
+      <label>Project List</label>
+      <div class="row">
+        <select type="number" class="col-12" [(ngModel)]="projectObj">
+          <option *ngFor="let project of projects | projectFilter:searchProj" [ngValue]="project">{{project.projName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-3">
+      <label> Roles: </label>
+      <div class="row">
+        <select type="number" class="col-12" [(ngModel)]="roleObj">
+          <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+        </select>
+      </div>
+    </div>
     <i class="col-3 fa fa-check fa fa-2x" (click)="addProjectForUser()"></i>
   </div>
   <div class="card-group" style="margin: 10px;">
@@ -53,13 +65,15 @@
 
       <div class="card project-card">
         <a routerLink="/project/{{project.project.id}}/image">
-          <img class="card-img-top wbdv-card-img" src="./images/color-bg.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-title">{{project.project.projName}}</p>
+            <h5 class="card-title">{{project.project.projName}}</h5>
           </div>
         </a>
-        <div>
-          <i class="float-right fa fa-trash" (click)="deleteProj(project)"></i>
+        <div *ngIf="project.role ==='admin' || project.role==='owner'">
+          <i class="fa fa-trash fa-2x" (click)="deleteProj(project)"></i>
+        </div>
+        <div *ngIf="project.role ==='contributor' || project.role==='reader'">
+          <i class="fa fa-trash fa-2x" (click)="deleteProj(project)"></i>
         </div>
       </div>
 

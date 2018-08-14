@@ -71,11 +71,13 @@
 
 <header>
   <!--<script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>-->
-  <div class="fixed-top">
+  <div>
+    <a routerLink="/profile">
         <span class="float-right"
               style="padding-top: 10px; padding-right: 10px; font-family: 'Roboto Mono', monospace;">
-            <i class="fa fa-user"></i> Megan Fox
+            <i class="fa fa-user"></i> {{user.firstName}}
         </span>
+    </a>
     <div class="wbdv-header">
       <div class="project-font">
         <h1 class="float-left"> My Images </h1>
@@ -169,7 +171,7 @@
           <!--<option value="average">Average</option>-->
           <!--<option value="bad">Bad</option>-->
         <!--</select>-->
-        <i class="fa fa-trash" (click)="deleteImage(image)"></i>
+        <i class="fa fa-trash" *ngIf="role==='admin' || role==='owner' || role==='contributor'" (click)="deleteImage(image)"></i>
       </div>
 
 
